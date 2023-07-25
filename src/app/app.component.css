@@ -1,0 +1,23 @@
+.black-border{
+    border: 1px solid #24486b
+}
+
+
+main{
+    position:absolute;
+    width:100%;
+    top:4rem;
+    z-index: 1;
+}
+app-sidenav {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 45px;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #24486b;
+    border-top: 1px solid white;
+  }
+

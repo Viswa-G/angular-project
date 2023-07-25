@@ -1,0 +1,91 @@
+
+<nav class="navbar-third flex" >
+        
+  <div class="left flex">
+      <h3 class="candidate">All Candidates - Active ({{ getTotalCandidateCount() }})</h3>
+  </div>
+
+
+  
+
+</nav>
+
+<div class="flex-container">
+
+  
+  
+
+<!-- To do List -->
+<div class="example-container">
+  <h2 >Open - {{ todo.length }}</h2>
+  <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList, inProgressList, reviewList]" class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-card" *ngFor="let item of todo" cdkDrag>
+      <mat-card class="example-card-content">
+        <div class="card-header">{{ item.title }}</div>
+        <div class="card-content">{{ item.content }}</div>
+        <div class="star-rating" (mouseover)="onStarHover($event, item)" (click)="onStarClick($event, item)">
+          <mat-icon *ngFor="let _ of [].constructor(5); let i = index"
+                    [ngClass]="{ 'star-filled': i < (item.tempRating || item.rating), 'star-empty': i >= (item.tempRating || item.rating) }">
+            star
+          </mat-icon>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="example-container">
+  <h2>Contacted - {{ inProgress.length }}</h2>
+  <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress" [cdkDropListConnectedTo]="[doneList, todoList, reviewList]" class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-card" *ngFor="let item of inProgress" cdkDrag>
+      <mat-card class="example-card-content">
+        <div class="card-header">{{ item.title }}</div>
+        <div class="card-content">{{ item.content }}</div>
+        <div class="star-rating" (mouseover)="onStarHover($event, item)" (click)="onStarClick($event, item)">
+          <mat-icon *ngFor="let _ of [].constructor(5); let i = index" [ngClass]="{ 'star-filled': i < item.rating, 'star-empty': i >= item.rating }">star</mat-icon>
+        </div>
+        <mat-icon class="letter-icon" aria-hidden="true">person</mat-icon>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+
+<div class="example-container">
+  <h2>Written Test Completed - {{ review.length }}</h2>
+  <div cdkDropList #reviewList="cdkDropList" [cdkDropListData]="review" [cdkDropListConnectedTo]="[doneList, todoList, inProgressList]" class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-card" *ngFor="let item of review" cdkDrag>
+      <mat-card class="example-card-content">
+        <div class="card-header">{{ item.title }}</div>
+        <div class="card-content">{{ item.content }}</div>
+        <div class="star-rating" (mouseover)="onStarHover($event, item)" (click)="onStarClick($event, item)">
+          <mat-icon *ngFor="let _ of [].constructor(5); let i = index"
+                    [ngClass]="{ 'star-filled': i < (item.tempRating || item.rating), 'star-empty': i >= (item.tempRating || item.rating) }">
+            star
+          </mat-icon>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Newton School - {{ done.length }}</h2>
+  <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList, inProgressList, reviewList]" class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-card" *ngFor="let item of done" cdkDrag>
+      <mat-card class="example-card-content">
+        <div class="card-header">{{ item.title }}</div>
+        <div class="card-content">{{ item.content }}</div>
+        <div class="star-rating" (mouseover)="onStarHover($event, item)" (click)="onStarClick($event, item)">
+          <mat-icon *ngFor="let _ of [].constructor(5); let i = index"
+                    [ngClass]="{ 'star-filled': i < (item.tempRating || item.rating), 'star-empty': i >= (item.tempRating || item.rating) }">
+            star
+          </mat-icon>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>
+
